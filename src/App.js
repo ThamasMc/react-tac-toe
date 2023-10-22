@@ -21,13 +21,18 @@ function Square({ val, fooClick }) {
 
 export default function Board() {
   const [spaces, setSpaces] = useState(Array(9).fill(0));
+  const [xActive, setXActive] = useState(true);
   let count = 0;
 
   function barClick(pos){
+    if(spaces[pos]) return;
+
     let newSpaces = spaces.slice();
 
-    newSpaces[pos] = "X";
+    let newCharacter = xActive ? 'X' : 'O'
+    newSpaces[pos] = newCharacter;
     setSpaces(newSpaces);
+    setXActive(!xActive);
   }
   
   return (
