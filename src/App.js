@@ -1,4 +1,8 @@
-function Square({ val }) {
+import { useState } from 'react';
+
+function Square() {
+  const [val, setVal] = useState(null);
+
   function fooClick() {
     alert('This is annoying');
   }
@@ -18,19 +22,19 @@ export default function Board() {
   return (
     <>
       <div class="board-row">
-        <Square val={count++} />
-        <Square val={count++} />
-        <Square val={count++} />
+        <Square  />
+        <Square  />
+        <Square  />
       </div>
       <div class="board-row">
-        <Square val={count++} />
-        <Square val={count++} />
-        <Square val={count++} />
+        <Square  />
+        <Square  />
+        <Square  />
       </div>
       <div class="board-row">
-        <Square val={count++} />
-        <Square val={count++} />
-        <Square val={count++} />
+        <Square  />
+        <Square  />
+        <Square  />
       </div>
     </>
   );
