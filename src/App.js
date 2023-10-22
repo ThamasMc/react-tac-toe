@@ -1,10 +1,6 @@
 import { useState } from 'react';
 
-function Square({ val }) {
-
-  function fooClick() {
-    console.log('We are going to change this in a sec');
-  }
+function Square({ val, fooClick }) {
 
   return(
     <button
@@ -26,23 +22,30 @@ function Square({ val }) {
 export default function Board() {
   const [spaces, setSpaces] = useState(Array(9).fill(0));
   let count = 0;
+
+  function barClick(pos){
+    let newSpaces = spaces.slice();
+
+    newSpaces[pos] = "X";
+    setSpaces(newSpaces);
+  }
   
   return (
     <>
       <div class="board-row">
-        <Square val={spaces[count++]} />
-        <Square val={spaces[count++]} />
-        <Square val={spaces[count++]} />
+        <Square val={spaces[count++]} fooClick={() => barClick(0)} />
+        <Square val={spaces[count++]} fooClick={() => barClick(1)} />
+        <Square val={spaces[count++]} fooClick={() => barClick(2)} />
       </div>
       <div class="board-row">
-        <Square val={spaces[count++]} />
-        <Square val={spaces[count++]} />
-        <Square val={spaces[count++]} />
+        <Square val={spaces[count++]} fooClick={() => barClick(3)} />
+        <Square val={spaces[count++]} fooClick={() => barClick(4)} />
+        <Square val={spaces[count++]} fooClick={() => barClick(5)} />
       </div>
       <div class="board-row">
-        <Square val={spaces[count++]} />
-        <Square val={spaces[count++]} />
-        <Square val={spaces[count++]} />
+        <Square val={spaces[count++]} fooClick={() => barClick(6)} />
+        <Square val={spaces[count++]} fooClick={() => barClick(7)} />
+        <Square val={spaces[count++]} fooClick={() => barClick(8)} />
       </div>
     </>
   );
