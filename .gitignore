@@ -1,0 +1,5 @@
+# Vim
+*.swp
+
+# Node artifacts
+node_modules/
