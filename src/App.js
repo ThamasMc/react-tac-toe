@@ -25,7 +25,7 @@ export default function Board() {
   let count = 0;
 
   function barClick(pos){
-    if(spaces[pos]) return;
+    if(spaces[pos] || calculateWinner(spaces)) return;
 
     let newSpaces = spaces.slice();
 
@@ -34,20 +34,23 @@ export default function Board() {
     setSpaces(newSpaces);
     setXActive(!xActive);
   }
+
+  let status = calculateWinner(spaces) ? `${xActive ? 'O' : 'X'} is our winner!` : `It is ${xActive ? 'X' : 'O'}'s turn`
   
   return (
     <>
-      <div class="board-row">
+      <div className="status">{status}</div>
+      <div className="board-row">
         <Square val={spaces[count++]} fooClick={() => barClick(0)} />
         <Square val={spaces[count++]} fooClick={() => barClick(1)} />
         <Square val={spaces[count++]} fooClick={() => barClick(2)} />
       </div>
-      <div class="board-row">
+      <div className="board-row">
         <Square val={spaces[count++]} fooClick={() => barClick(3)} />
         <Square val={spaces[count++]} fooClick={() => barClick(4)} />
         <Square val={spaces[count++]} fooClick={() => barClick(5)} />
       </div>
-      <div class="board-row">
+      <div className="board-row">
         <Square val={spaces[count++]} fooClick={() => barClick(6)} />
         <Square val={spaces[count++]} fooClick={() => barClick(7)} />
         <Square val={spaces[count++]} fooClick={() => barClick(8)} />
@@ -55,3 +58,25 @@ export default function Board() {
     </>
   );
 }
+
+// We'll just used the supplied alg for now
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
+
