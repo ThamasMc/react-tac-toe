@@ -59,15 +59,32 @@ function Board({ xActive, spaces, onPlay }) {
 export default function Game() {
   const [xActive, setXActive] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
-  const currentSpaces = history[history.length - 1];
+  const [currentMove, setCurrentMove] = useState(0);
+  const currentSpaces = history[currentMove];
 
   function handlePlay(newSpaces) {
-    let newHistory = history.slice();
+    let newHistory = history.slice(0, currentMove + 1);
     newHistory.push(newSpaces);
 
     setHistory(newHistory);
     setXActive(!xActive);
+    setCurrentMove(newHistory.length - 1);
   }
+
+  function jumpTo(nextMove) {
+    setCurrentMove(nextMove);
+    setXActive(nextMove % 2 === 0);
+  }
+
+  const moves = history.map((spaces, pos) => {
+    let description = pos > 0 ? `Return to turn ${pos}` : "Restart the Game";
+
+    return(
+      <li key={pos}>
+        <button onClick={() => jumpTo(pos)}>{description}</button>
+      </li>
+    );
+  });
 
   return(
     <div className="game">
@@ -75,7 +92,7 @@ export default function Game() {
         <Board xActive={xActive} spaces={currentSpaces} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{/*TODO*/}</ol>
+        <ol>{moves}</ol>
       </div>
     </div>
   );
