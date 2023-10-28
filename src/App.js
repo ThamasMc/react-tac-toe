@@ -19,20 +19,17 @@ function Square({ val, fooClick }) {
  *
  * Lifting state into a parent component is common when React components are refactored. */
 
-export default function Board() {
-  const [spaces, setSpaces] = useState(Array(9).fill(0));
-  const [xActive, setXActive] = useState(true);
+function Board({ xActive, spaces, onPlay }) {
   let count = 0;
 
-  function barClick(pos){
+  function barClick(pos) {
     if(spaces[pos] || calculateWinner(spaces)) return;
 
     let newSpaces = spaces.slice();
 
     let newCharacter = xActive ? 'X' : 'O'
     newSpaces[pos] = newCharacter;
-    setSpaces(newSpaces);
-    setXActive(!xActive);
+    onPlay(newSpaces);
   }
 
   let status = calculateWinner(spaces) ? `${xActive ? 'O' : 'X'} is our winner!` : `It is ${xActive ? 'X' : 'O'}'s turn`
@@ -56,6 +53,31 @@ export default function Board() {
         <Square val={spaces[count++]} fooClick={() => barClick(8)} />
       </div>
     </>
+  );
+}
+
+export default function Game() {
+  const [xActive, setXActive] = useState(true);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const currentSpaces = history[history.length - 1];
+
+  function handlePlay(newSpaces) {
+    let newHistory = history.slice();
+    newHistory.push(newSpaces);
+
+    setHistory(newHistory);
+    setXActive(!xActive);
+  }
+
+  return(
+    <div className="game">
+      <div className="game-board">
+        <Board xActive={xActive} spaces={currentSpaces} onPlay={handlePlay} />
+      </div>
+      <div className="game-info">
+        <ol>{/*TODO*/}</ol>
+      </div>
+    </div>
   );
 }
 
