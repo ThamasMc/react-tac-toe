@@ -82,7 +82,7 @@ export default function Game() {
     if(pos === history.length - 1) {
       return(
         <li key={pos}>
-          <h3 className="current-turn">Viewing turn: {pos}</h3>
+          <h3>Viewing turn: {pos}</h3>
         </li>
       );
     }

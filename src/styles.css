@@ -61,9 +61,6 @@ body {
   padding: 0;
 }
 
-.current-turn {
-}
-
 .square {
   background: #fff;
   border: 1px solid #999;
