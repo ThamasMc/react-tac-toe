@@ -20,6 +20,7 @@ function Square({ val, fooClick }) {
  * Lifting state into a parent component is common when React components are refactored. */
 
 function Board({ xActive, spaces, onPlay }) {
+  let boardSize = 3;
   let count = 0;
 
   function barClick(pos) {
@@ -33,25 +34,26 @@ function Board({ xActive, spaces, onPlay }) {
   }
 
   let status = calculateWinner(spaces) ? `${xActive ? 'O' : 'X'} is our winner!` : `It is ${xActive ? 'X' : 'O'}'s turn`
+
+   const renderRow = (rowIndex) => (
+     <div className="board-row" key={rowIndex}>
+       {[0, 1, 2].map((colIndex) => {
+         const position = rowIndex * boardSize + colIndex;
+         return (
+           <Square
+             key={colIndex}
+             val={spaces[position]}
+             fooClick={() => barClick(position)}
+           />
+         );
+       })}
+     </div>
+   );
   
   return (
     <>
       <div className="status">{status}</div>
-      <div className="board-row">
-        <Square val={spaces[count++]} fooClick={() => barClick(0)} />
-        <Square val={spaces[count++]} fooClick={() => barClick(1)} />
-        <Square val={spaces[count++]} fooClick={() => barClick(2)} />
-      </div>
-      <div className="board-row">
-        <Square val={spaces[count++]} fooClick={() => barClick(3)} />
-        <Square val={spaces[count++]} fooClick={() => barClick(4)} />
-        <Square val={spaces[count++]} fooClick={() => barClick(5)} />
-      </div>
-      <div className="board-row">
-        <Square val={spaces[count++]} fooClick={() => barClick(6)} />
-        <Square val={spaces[count++]} fooClick={() => barClick(7)} />
-        <Square val={spaces[count++]} fooClick={() => barClick(8)} />
-      </div>
+      {[0, 1, 2].map((rowIndex) => renderRow(rowIndex))}
     </>
   );
 }
