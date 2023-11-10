@@ -82,13 +82,13 @@ export default function Game() {
     if(pos === history.length - 1) {
       return(
         <li key={pos}>
-          <div>Viewing turn: {pos}</div>
+          <h3 className="current-turn">Viewing turn: {pos}</h3>
         </li>
       );
     }
     return(
       <li key={pos}>
-        <button onClick={() => jumpTo(pos)}>{description}</button>
+        <button className="turn-button" onClick={() => jumpTo(pos)}>{description}</button>
       </li>
     );
   });

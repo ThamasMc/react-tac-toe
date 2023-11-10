@@ -44,6 +44,11 @@ code {
 
 ul {
   padding-inline-start: 20px;
+  list-style-type: none;
+}
+
+li {
+  padding: 5px 0px;
 }
 
 * {
@@ -54,6 +59,9 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+}
+
+.current-turn {
 }
 
 .square {
@@ -80,6 +88,7 @@ body {
 .status {
   margin-bottom: 10px;
 }
+
 .game {
   display: flex;
   flex-direction: row;
@@ -87,4 +96,17 @@ body {
 
 .game-info {
   margin-left: 20px;
+}
+
+.turn-button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  text-decoration: none;
+  padding: 5px 8px;
+}
+
+.turn-button:active {
+  transform: translateY(2px);
+  background-color: #00475e;
 }
