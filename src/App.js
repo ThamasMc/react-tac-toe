@@ -79,6 +79,13 @@ export default function Game() {
   const moves = history.map((spaces, pos) => {
     let description = pos > 0 ? `Return to turn ${pos}` : "Restart the Game";
 
+    if(pos === history.length - 1) {
+      return(
+        <li key={pos}>
+          <div>Viewing turn: {pos}</div>
+        </li>
+      );
+    }
     return(
       <li key={pos}>
         <button onClick={() => jumpTo(pos)}>{description}</button>
@@ -92,7 +99,7 @@ export default function Game() {
         <Board xActive={xActive} spaces={currentSpaces} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{moves}</ol>
+        <ul>{moves}</ul>
       </div>
     </div>
   );
