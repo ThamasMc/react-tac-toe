@@ -107,3 +107,8 @@ body {
   transform: translateY(2px);
   background-color: #00475e;
 }
+
+.winner {
+  background: #008000;
+  color: #FFFFFF;
+}

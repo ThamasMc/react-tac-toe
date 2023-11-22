@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-function Square({ val, fooClick }) {
+function Square({ val, fooClick, winner }) {
 
   return(
     <button
-      className="square"
+      className={`square ${winner}`}
       onClick={fooClick}
     >
       { val }
@@ -33,16 +33,26 @@ function Board({ xActive, spaces, onPlay }) {
     onPlay(newSpaces);
   }
 
-  let status = calculateWinner(spaces) ? `${xActive ? 'O' : 'X'} is our winner!` : `It is ${xActive ? 'X' : 'O'}'s turn`
+  let winners = calculateWinner(spaces);
+
+  if(winners) {
+    status = `${xActive ? 'O' : 'X'} is our winner!`;
+  } else if(!spaces.includes(null)) {
+    status = "It's a draw!";
+  } else {
+    status = `It is ${xActive ? 'X' : 'O'}'s turn`
+  }
 
    const renderRow = (rowIndex) => (
      <div className="board-row" key={rowIndex}>
        {[0, 1, 2].map((colIndex) => {
          const position = rowIndex * boardSize + colIndex;
+         let winning_square = winners?.includes(position);
          return (
            <Square
              key={colIndex}
              val={spaces[position]}
+             winner={ winning_square ? "winner" : ""}
              fooClick={() => barClick(position)}
            />
          );
@@ -108,6 +118,7 @@ export default function Game() {
 }
 
 // We'll just used the supplied alg for now
+// -- Changing things up to return the winning row
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -122,7 +133,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return lines[i];
     }
   }
   return null;
