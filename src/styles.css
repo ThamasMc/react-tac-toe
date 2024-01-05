@@ -69,6 +69,7 @@ body {
 }
 
 .square {
+  all: unset;
   background: #111;
   border: 2px solid #00E525;
   float: left;
@@ -82,6 +83,23 @@ body {
   text-align: center;
   width: 100px;
   color: white;
+  transition-duration: 0.5s;
+}
+
+.top {
+  border-top: 2px solid #111;
+}
+
+.left {
+  border-left: 2px solid #111;
+}
+
+.right {
+  border-right: 2px solid #111;
+}
+
+.bottom {
+  border-bottom: 2px solid #111;
 }
 
 .board-row:after {
@@ -97,10 +115,14 @@ body {
 .game {
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
+  padding: 50px 100px;
+}
+
+.game-board {
 }
 
 .game-info {
-  margin-left: 20px;
 }
 
 .turn-button {
@@ -115,6 +137,10 @@ body {
 }
 
 .turn-button:hover {
+  background: #008000;
+}
+
+.square:empty:hover {
   background: #008000;
 }
 
