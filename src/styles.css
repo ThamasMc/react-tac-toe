@@ -54,10 +54,6 @@ ul {
   list-style-type: none;
 }
 
-li {
-  /* padding: 5px 0px; */
-}
-
 * {
   box-sizing: border-box;
 }
@@ -151,5 +147,4 @@ body {
 
 .winner {
   background: #008000;
-  /* background: #009518; */
 }
