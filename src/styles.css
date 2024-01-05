@@ -6,6 +6,8 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  background-color: #111111;
+  color: white;
 }
 
 h1 {
@@ -21,6 +23,11 @@ h2 {
 h3 {
   margin-top: 0;
   font-size: 18px;
+}
+
+li > h3 {
+  padding-top: 5px;
+  padding-left: 8px;
 }
 
 h4 {
@@ -47,10 +54,6 @@ ul {
   list-style-type: none;
 }
 
-li {
-  padding: 5px 0px;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -62,18 +65,37 @@ body {
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  all: unset;
+  background: #111;
+  border: 2px solid #00E525;
   float: left;
-  font-size: 24px;
+  font-size: 72px;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
+  line-height: 100px;
+  height: 100px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 100px;
+  color: white;
+  transition-duration: 0.5s;
+}
+
+.top {
+  border-top: 2px solid #111;
+}
+
+.left {
+  border-left: 2px solid #111;
+}
+
+.right {
+  border-right: 2px solid #111;
+}
+
+.bottom {
+  border-bottom: 2px solid #111;
 }
 
 .board-row:after {
@@ -89,18 +111,33 @@ body {
 .game {
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
+  padding: 50px 100px;
+}
+
+.game-board {
 }
 
 .game-info {
-  margin-left: 20px;
 }
 
 .turn-button {
-  background-color: #008CBA;
-  border: none;
+  all: unset;
+  background-color: #111;
+  border-bottom: 2px solid #00E525;
   color: white;
   text-decoration: none;
   padding: 5px 8px;
+  width: 100%;
+  transition-duration: 0.25s;
+}
+
+.turn-button:hover {
+  background: #008000;
+}
+
+.square:empty:hover {
+  background: #008000;
 }
 
 .turn-button:active {
@@ -110,5 +147,4 @@ body {
 
 .winner {
   background: #008000;
-  color: #FFFFFF;
 }

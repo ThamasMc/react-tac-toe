@@ -32,6 +32,7 @@ export default function Board({ xActive, spaces, onPlay }) {
          return (
            <Square
              key={colIndex}
+             position={posToWord(position)}
              val={spaces[position]}
              winner={ winning_square ? "winner" : ""}
              fooClick={() => barClick(position)}
@@ -47,6 +48,24 @@ export default function Board({ xActive, spaces, onPlay }) {
       {[0, 1, 2].map((rowIndex) => renderRow(rowIndex))}
     </>
   );
+}
+
+function posToWord(position) {
+  let posArr = [];
+  if(position <= 2) {
+    posArr.push("top");
+  }
+  if(position >= 6) {
+    posArr.push("bottom");
+  }
+  if(position % 3 == 0) {
+    posArr.push("left");
+  }
+  if(position % 3 == 2) {
+    posArr.push("right");
+  }
+
+  return posArr.join(" ");
 }
 
 function calculateWinner(squares) {
