@@ -6,6 +6,8 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  background-color: #111111;
+  color: white;
 }
 
 h1 {
@@ -21,6 +23,11 @@ h2 {
 h3 {
   margin-top: 0;
   font-size: 18px;
+}
+
+li > h3 {
+  padding-top: 5px;
+  padding-left: 8px;
 }
 
 h4 {
@@ -48,7 +55,7 @@ ul {
 }
 
 li {
-  padding: 5px 0px;
+  /* padding: 5px 0px; */
 }
 
 * {
@@ -62,18 +69,19 @@ body {
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  background: #111;
+  border: 2px solid #00E525;
   float: left;
-  font-size: 24px;
+  font-size: 72px;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
+  line-height: 100px;
+  height: 100px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 100px;
+  color: white;
 }
 
 .board-row:after {
@@ -96,11 +104,18 @@ body {
 }
 
 .turn-button {
-  background-color: #008CBA;
-  border: none;
+  all: unset;
+  background-color: #111;
+  border-bottom: 2px solid #00E525;
   color: white;
   text-decoration: none;
   padding: 5px 8px;
+  width: 100%;
+  transition-duration: 0.25s;
+}
+
+.turn-button:hover {
+  background: #008000;
 }
 
 .turn-button:active {
@@ -110,5 +125,5 @@ body {
 
 .winner {
   background: #008000;
-  color: #FFFFFF;
+  /* background: #009518; */
 }
