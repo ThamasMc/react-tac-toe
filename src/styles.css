@@ -129,7 +129,6 @@ body {
   text-decoration: none;
   padding: 5px 8px;
   width: 100%;
-  transition-duration: 0.25s;
 }
 
 .turn-button:hover {
@@ -137,7 +136,7 @@ body {
 }
 
 .square:empty:hover {
-  background: #008000;
+  animation: fadeInOut 4s infinite;
 }
 
 .turn-button:active {
@@ -147,4 +146,16 @@ body {
 
 .winner {
   background: #008000;
+}
+
+@keyframes fadeInOut {
+  0% {
+    background: #111;
+  }
+  50% {
+    background: #008800
+  }
+  100% {
+    background: #111
+  }
 }
