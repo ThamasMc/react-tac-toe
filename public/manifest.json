@@ -1,11 +1,29 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "React Tac Toe",
+  "name": "Making a Tic Tac Toe game with React!",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64",
       "type": "image/png"
+    }, 
+    {
+      "src": "icon64x64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icon512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ],
   "start_url": "./index.html",
