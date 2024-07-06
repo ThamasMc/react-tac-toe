@@ -1,6 +1,0 @@
-# Vim
-*.swp
-
-# Node artifacts and local build
-node_modules/
-build/
