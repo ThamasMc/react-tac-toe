@@ -4,6 +4,7 @@ Brushing up on front-end fundamentals, and running through React's tic-tac-toe h
 Looking to jump across different technologies doing similar things to make sure I keep up practice with starting things from scratch, when working in established companies, this is a skill that's easier to fall to the wayside as you continue working on projects that have, at times, existed for decades.
 
 Deployed the app using Netlify [here.](https://stirring-frangipane-283b1f.netlify.app/)
+Also available via [Github Pages!](https://thamasmc.github.io/react-tac-toe)
 
 -- Thamas
 
